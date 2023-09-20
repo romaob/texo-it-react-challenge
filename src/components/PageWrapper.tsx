@@ -17,10 +17,10 @@ export default function PageWrapper({
   return (
     <div className='page-wrapper' data-testid='page-wrapper'>
       <div className='page-wrapper-header'>
-        <div className='page-wrapper-header-button'>
-            <Button type='text' icon='menu' onClick={() => setMenuShow(!menuShow)}/>
+        <div className='page-wrapper-header-button' data-show={menuShow} data-testid='page-wrapper-header-button'>
+            <Button type='text' icon='menu' onClick={() => setMenuShow(!menuShow)} testId='toggle-menu'/>
         </div>
-        <h1>{strings.appName}</h1>
+        <h1 data-testid='page-wrapper-app-name'>{strings.appName}</h1>
       </div>
       <div className='page-wrapper-body'>
         <div className='page-wrapper-menu' data-testid='page-wrapper-menu' data-show={menuShow}>
@@ -29,7 +29,7 @@ export default function PageWrapper({
             ))}
         </div>
         <div className='page-wrapper-content'>
-            <h2>{title}</h2>
+            <h2 data-testid='page-wrapper-title'>{title}</h2>
             {children}
         </div>
       </div>
