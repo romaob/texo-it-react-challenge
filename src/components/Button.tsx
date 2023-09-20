@@ -9,6 +9,7 @@ export interface ButtonProps {
     onClick?: () => void;
     children?: React.ReactNode;
     testId?: string;
+    disabled?: boolean;
 }
 
 export default function Button({
@@ -19,7 +20,8 @@ export default function Button({
     contrast,
     onClick,
     children,
-    testId = 'button'
+    testId = 'button',
+    disabled,
 } : ButtonProps): JSX.Element {
   const imagePath = icon ? require(`../assets/icons/${icon}.png`) : null;
 
@@ -28,6 +30,7 @@ export default function Button({
         className={`button ${type === 'text' ? 'button-text' : ''} ${contrast ? 'button-text-contrast' : ''}`} 
         onClick={onClick} 
         href={link} 
+        data-disabled={disabled}
         data-testid={testId}
     >
         {imagePath && <img src={imagePath} alt='icon' data-testid='button-icon'/>}

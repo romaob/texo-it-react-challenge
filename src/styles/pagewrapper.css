@@ -37,6 +37,7 @@
     flex-direction: column;
     padding-inline: 1rem;
     align-items: flex-start;
+    background-color: var(--background);
 }
 .page-wrapper-menu[data-show="false"] {
     display: none;

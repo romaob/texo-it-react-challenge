@@ -10,7 +10,11 @@ export function fetchData({
 }: {
     param?: string;
 }): Promise<any> {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
+
+        //Add a little delay just to better see the loading state :)
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
         fetch(URL + param)
             .then((response) => response.json())
             .then((responseJson) => {
