@@ -1,5 +1,7 @@
 import React from 'react'
 import { strings } from '../values/strings';
+import { ROUTES } from '../values/routes';
+import Button from './Button';
 
 export interface PageWrapperProps {
     title?: string;
@@ -17,7 +19,9 @@ export default function PageWrapper({
       </div>
       <div className='page-wrapper-body'>
         <div className='page-wrapper-menu' data-testid='page-wrapper-menu'>
-            Menu
+            {Object.values(ROUTES).map((route) => (
+                <Button key={route.path} text={route.name} type='text' contrast link={route.path} />
+            ))}
         </div>
         <div className='page-wrapper-content'>
             <h2>{title}</h2>
