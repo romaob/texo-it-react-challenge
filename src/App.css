@@ -1,8 +1,16 @@
-/* Importing /styles */
+/* Imports */
 @import 'styles/palette.css';
 @import 'styles/pagewrapper.css';
 @import 'styles/button.css';
+@import 'styles/skeleton.css';
+@import 'styles/datatable.css';
 
 .App {
   text-align: center;
+}
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
