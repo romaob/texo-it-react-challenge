@@ -1,0 +1,33 @@
+.input {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.input[data-flex="true"] {
+    flex: 1;
+}
+
+.input[data-disabled="true"] {
+    opacity: 0.5;
+}
+
+.input-field {
+    padding: 0.25rem;
+    font-size: 1rem;
+    border: 1px solid var(--secondary);
+    border-radius: 0.5rem;
+}
+
+.input-field[data-error="true"] {
+    border-color: var(--error);
+}
+
+.input-label {
+    font-size: 0.75rem;
+}
+
+.input-error {
+    font-size: 0.75rem;
+    color: var(--error);
+}
