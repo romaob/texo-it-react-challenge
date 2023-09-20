@@ -9,11 +9,13 @@
     background-color: var(--primary);
     color: white;
     padding: 1rem;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: flex-start;
 }
 .page-wrapper-header h1{
     font-size: 1rem;
     line-height: 0.75rem;
+    font-weight: 600;
 }
 .page-wrapper-body {
     display: flex;
@@ -35,4 +37,17 @@
     flex-direction: column;
     padding-inline: 1rem;
     align-items: flex-start;
+}
+.page-wrapper-menu[data-show="false"] {
+    display: none;
+}
+
+/* Hiding the button, and showing the menu on larger screens*/
+@media only screen and (min-width: 768px) {
+    .page-wrapper-menu[data-show="false"] {
+        display: flex;
+    }
+    .page-wrapper-header-button{
+        display: none;
+    }
 }

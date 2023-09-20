@@ -1,4 +1,7 @@
 .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: var(--primary);
     border: none;
     border-radius: 0.5rem;
@@ -16,4 +19,9 @@
 }
 .button-text-contrast {
     color: white;
+}
+
+.button img {
+    width: 1.5rem;
+    height: 1.5rem;
 }
