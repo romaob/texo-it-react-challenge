@@ -6,10 +6,6 @@
 @import 'styles/datatable.css';
 @import 'styles/dashboard.css';
 
-.App {
-  text-align: center;
-}
-
 .text-truncate {
   overflow: hidden;
   text-overflow: ellipsis;

@@ -22,12 +22,12 @@ export default function DashboardPanel({
     }
 
     return (
-        <div className='dashboard-panel'>
-            <div className='dashboard-panel-header'>
+        <div className='dashboard-panel' data-testid='dashboard-panel'>
+            <div className='dashboard-panel-header' data-testid='dashboard-panel-header'>
                 <h3 className='dashboard-panel-title'>{title}</h3>
-                <Button onClick={handleRefresh} icon='refresh' disabled={loading}/>
+                <Button onClick={handleRefresh} icon='refresh' disabled={loading} testId='dashboard-panel-refresh'/>
             </div>
-            <div className='dashboard-panel-body'>
+            <div className='dashboard-panel-body' data-testid='dashboard-panel-body'>
                 {children}
             </div>
         </div>
