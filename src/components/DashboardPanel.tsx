@@ -1,6 +1,5 @@
 import React from 'react'
 import Button from './Button';
-import Skeleton from './Skeleton';
 
 export interface DashboardPanelProps {
     title: string;
@@ -8,7 +7,14 @@ export interface DashboardPanelProps {
     loading: boolean;
     children: React.ReactNode;
 }
-
+/**
+ * Panel component used on the dashboard page
+ * @prop {string} title - The title of the panel
+ * @prop {function} onRefresh - The function to be called when the refresh button is clicked
+ * @prop {boolean} loading - If the panel is loading
+ * @prop {React.ReactNode} children - The children to be displayed on the panel
+ * @returns JSX.Element
+ */
 export default function DashboardPanel({ 
     title, 
     onRefresh, 

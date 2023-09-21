@@ -10,7 +10,16 @@ export interface PaginationProps {
     pageSize: number;
     totalItems: number;
 }
-
+/**
+ * Pagination component, used to display a reusable pagination
+ * @prop {boolean} loading - If the pagination is loading
+ * @prop {number} currentPage - The current page
+ * @prop {number} limit - The limit of pages to be displayed
+ * @prop {function} onPageChange - The function to be called when the page changes
+ * @prop {number} pageSize - The size of the page
+ * @prop {number} totalItems - The total number of items, used to calculate the number of pages
+ * @returns JSX.Element
+ */
 export default function Pagination({
     loading,
     currentPage,

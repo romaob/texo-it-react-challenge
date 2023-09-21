@@ -8,6 +8,12 @@ export interface PageWrapperProps {
     children: React.ReactNode;
 }
 
+/**
+ * Page wrapper component, used to display the default components on all pages
+ * @prop {string} title - The title of the page
+ * @prop {React.ReactNode} children - The children to be displayed on the page
+ * @returns JSX.Element
+ */
 export default function PageWrapper({
     title,
     children

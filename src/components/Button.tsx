@@ -13,7 +13,21 @@ export interface ButtonProps {
     readOnly?: boolean;
     toggled?: boolean;
 }
-
+/**
+ * Main button component
+ * @prop {string} text - The text to be displayed on the button
+ * @prop {string} type - The type of the button default or text
+ * @prop {string} link - The link to be followed when the button is clicked
+ * @prop {string} icon - The icon to be displayed on the button
+ * @prop {boolean} contrast - If the button text should be displayed with contrast color
+ * @prop {function} onClick - The function to be called when the button is clicked
+ * @prop {React.ReactNode} children - The children to be displayed on the button
+ * @prop {string} testId - The test id to be used on the tests
+ * @prop {boolean} disabled - If the button should be disabled
+ * @prop {boolean} readOnly - If the button should be read only
+ * @prop {boolean} toggled - If the button should be toggled state, showing a different background color (useful for check buttons)
+ * @returns JSX.Element
+ */
 export default function Button({
     text,
     type,

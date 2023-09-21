@@ -10,7 +10,18 @@ export interface InputProps {
     disabled?: boolean;
     flex?: boolean;
 }
-
+/**
+ * Input component, with the base design and functionality
+ * @prop {string} value - The value of the input
+ * @prop {string} label - The label of the input
+ * @prop {string} type - The type of the input
+ * @prop {string} error - The error message to be displayed
+ * @prop {function} onChange - The function to be called when the input value changes
+ * @prop {string} testId - The test id to be used on the tests
+ * @prop {boolean} disabled - If the input is disabled
+ * @prop {boolean} flex - If the input should be displayed as flex
+ * @returns JSX.Element
+ */
 export default function Input({
     value,
     label,

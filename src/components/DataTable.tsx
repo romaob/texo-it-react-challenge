@@ -16,6 +16,14 @@ export interface DataTableProps {
     emptyMessage?: string;
     testId?: string;
 }
+
+/**
+ * Data table component, used to dinamically display data on the app
+ * @prop {any[]} data - The object array of any type to be displayed on the table
+ * @prop {DataTableColumn[]} columns - The columns to be displayed on the table and their configurations
+ * @prop {string} emptyMessage - The message to be displayed when the table is empty
+ * @prop {string} testId - The test id to be used on the tests
+ */
 export default function DataTable({
     data,
     columns,
