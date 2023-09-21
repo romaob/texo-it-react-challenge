@@ -11,6 +11,7 @@ export interface ButtonProps {
     testId?: string;
     disabled?: boolean;
     readOnly?: boolean;
+    toggled?: boolean;
 }
 
 export default function Button({
@@ -24,6 +25,7 @@ export default function Button({
     testId = 'button',
     disabled,
     readOnly,
+    toggled,
 } : ButtonProps): JSX.Element {
   const imagePath = icon ? require(`../assets/icons/${icon}.png`) : null;
 
@@ -43,6 +45,7 @@ export default function Button({
         data-disabled={disabled}
         data-testid={testId}
         data-readonly={readOnly}
+        data-toggled={toggled}
     >
         {imagePath && <img src={imagePath} alt='icon' data-testid='button-icon'/>}
         {text && <span>{text}</span>}

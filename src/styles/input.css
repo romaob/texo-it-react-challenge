@@ -17,6 +17,8 @@
     font-size: 1rem;
     border: 1px solid var(--secondary);
     border-radius: 0.5rem;
+    min-width: 50px;
+    width: 100%;
 }
 
 .input-field[data-error="true"] {

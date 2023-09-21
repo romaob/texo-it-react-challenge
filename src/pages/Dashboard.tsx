@@ -10,6 +10,7 @@ import { useProducersMinMaxInterval } from '../hooks/useProducersMinMaxInterval'
 import { useMoviesByYear } from '../hooks/useMoviesByYear';
 import Input from '../components/Input';
 import Button from '../components/Button';
+import { validateStringYear } from '../utils/validations';
 
 export default function Dashboard(): JSX.Element {
   const yearsMultiWinners = useYearsMultiWinners();
@@ -35,31 +36,12 @@ export default function Dashboard(): JSX.Element {
    */
   function handleSearchClick() {
     setSearchError(null);
-    if (searchVal.length === 0) {
-      setSearchError('Year is required');
+    const errorMessage = validateStringYear(searchVal);
+    if (errorMessage) {
+      setSearchError(errorMessage);
       return;
     }
-    if (searchVal.length !== 4) {
-      setSearchError('Year must be 4 digits');
-      return;
-    }
-    if (isNaN(Number(searchVal))) {
-      setSearchError('Year must be a number');
-      return;
-    }
-    try {
-      const year = Number(searchVal);
-      if (year < 1900 || year > new Date().getFullYear()) {
-        setSearchError('Year must be between 1900 and the present');
-        return;
-      }
-
-      moviesByYear?.setYear(year);
-
-    } catch (e) {
-      setSearchError('Year must be a number');
-      return;
-    }
+    moviesByYear?.setYear(Number(searchVal));
   }
 
   return (

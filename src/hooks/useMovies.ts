@@ -5,10 +5,11 @@ interface UseMoviesResponse {
   loading: boolean;
   error: null | Error;
   response: null | FetchListOfMoviesResponse;
+  yearFilter: undefined | number;
   setPage: (page: number) => void;
   setSize: (size: number) => void;
-  setWinner: (winner: boolean) => void;
-  setYear: (year: number) => void;
+  setWinner: (winner: boolean | undefined) => void;
+  setYear: (year: number | undefined) => void;
   refetch: () => void;
 }
 
@@ -18,7 +19,7 @@ export function useMovies(): UseMoviesResponse {
   const [response, setResponse] = useState<null | FetchListOfMoviesResponse>(null);
   const [page, setPage] = useState(0);
   const [size, setSize] = useState(15);
-  const [winner, setWinner] = useState(false);
+  const [winner, setWinner] = useState<boolean | undefined>(undefined);
   const [year, setYear] = useState<undefined | number>(undefined);
 
   const fetchData = useCallback(
@@ -44,11 +45,12 @@ export function useMovies(): UseMoviesResponse {
   useEffect(() => {
       fetchData();
   }, [fetchData])
-
+  
   return {
     loading, 
     error, 
     response, 
+    yearFilter: year,
     refetch: fetchData, 
     setPage, 
     setSize, 

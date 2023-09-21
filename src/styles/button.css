@@ -36,3 +36,7 @@
 .button[data-readonly="true"] {
     cursor: default;
 }
+
+.button[data-toggled="true"] {
+    background-color: var(--primary-light);
+}

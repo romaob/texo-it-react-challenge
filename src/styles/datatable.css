@@ -20,9 +20,18 @@
     justify-content: center;
     font-size: 0.75rem;
     line-height: 0.75rem;
+    height: 2.5rem;
     background-color: var(--primary-light);
     color: var(--secondary);
 }
+.data-table-filter-header{
+    display: flex;
+    flex: 1;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
 .data-table-column-body {
     display: flex;
     flex-direction: column;
@@ -34,6 +43,7 @@
     font-size: 0.75rem;
     flex: 1;
     background-color: rgba(0, 0, 0, 0.05);
+    align-items: center;
 }
 
 .data-table-column-cell[data-even="true"] {

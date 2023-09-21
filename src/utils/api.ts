@@ -70,20 +70,20 @@ export type FetchListOfMoviesResponse = {
 export function fetchListOfMovies({
     page = 1,
     size = 99,
-    winner = false,
+    winner = undefined,
     year,
 }:{
     page?: number;
     size?: number;
-    winner?: boolean;
+    winner?: boolean | undefined;
     year?: number;
 }): Promise<FetchListOfMoviesResponse> {
-    const param = `?page=${page}&size=${size}`;
+    let param = `?page=${page}&size=${size}`;
     if (winner !== undefined) {
-        param.concat(`&winner=${winner}`);
+        param += `&winner=${winner}`;
     }
     if (year) {
-        param.concat(`&year=${year}`);
+        param += `&year=${year}`;
     }
     return fetchData({param});
 }
