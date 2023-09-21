@@ -38,6 +38,7 @@
     padding-inline: 1rem;
     align-items: flex-start;
     background-color: var(--background);
+    padding-block-end: 1rem;
 }
 .page-wrapper-menu[data-show="false"] {
     display: none;

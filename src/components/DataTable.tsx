@@ -3,6 +3,7 @@ import React from 'react'
 export type DataTableColumn = {
     objectKey: string;
     title: string;
+    cellTextParser?: (item: any) => string;
     customTitleRender?: () => JSX.Element;
     customCellRender?: (item: any) => JSX.Element;
     centerText?: boolean;
@@ -39,7 +40,8 @@ export default function DataTable({
                                 data-even={i % 2 === 0}
                                 data-centertext={column.centerText}
                             >
-                                {column.customCellRender?.(item) || <span>{item[column.objectKey]}</span>}
+                                {column.customCellRender?.(item) || 
+                                <span>{column.cellTextParser?.(item) || item[column.objectKey]}</span>}
                             </div>
                         ))}
                     </div>

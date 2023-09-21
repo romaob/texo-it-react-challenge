@@ -6,6 +6,8 @@
 @import 'styles/datatable.css';
 @import 'styles/dashboard.css';
 @import 'styles/input.css';
+@import 'styles/listpage.css';
+@import 'styles/pagination.css';
 
 .text-truncate {
   overflow: hidden;
