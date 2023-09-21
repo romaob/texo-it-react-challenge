@@ -46,8 +46,8 @@ export default function Dashboard(): JSX.Element {
 
   return (
     <PageWrapper title={ROUTES.DASHBOARD.name}>
-        <div className='dashboard'>
-          <div className='dashboard-row'>
+        <div className='dashboard' data-testid='dashboard'>
+          <div className='dashboard-row' data-testid='dashboard-row'>
             <Skeleton loading={yearsMultiWinners?.loading} flex>
               <DashboardPanel 
                 title='List years with multiple winners' 
@@ -55,21 +55,22 @@ export default function Dashboard(): JSX.Element {
                 loading={yearsMultiWinners?.loading}
               >
                 <DataTable 
-                      data={yearsMultiWinners?.response?.years || []}
-                      columns={[
-                        {
-                          objectKey: 'year',
-                          title: 'Year',
-                          flex: true,
-                          centerText: true,
-                        },
-                        {
-                          objectKey: 'winnerCount',
-                          title: 'Win Count',
-                          flex: true,
-                          centerText: true,
-                        },
-                      ]}
+                  data={yearsMultiWinners?.response?.years || []}
+                  columns={[
+                    {
+                      objectKey: 'year',
+                      title: 'Year',
+                      flex: true,
+                      centerText: true,
+                    },
+                    {
+                      objectKey: 'winnerCount',
+                      title: 'Win Count',
+                      flex: true,
+                      centerText: true,
+                    },
+                  ]}
+                  testId='table-years-multi-winners'
                   />
               </DashboardPanel>
             </Skeleton>
@@ -95,11 +96,12 @@ export default function Dashboard(): JSX.Element {
                           centerText: true,
                         },
                       ]}
+                      testId='table-studios-with-winners'
                   />
               </DashboardPanel>
             </Skeleton>
           </div>   
-          <div className='dashboard-row'>
+          <div className='dashboard-row' data-testid='dashboard-row'>
             <Skeleton loading={producersMinMaxWins?.loading} flex>
               <DashboardPanel 
                 title='Producers with longest and shortest interval between wins' 
@@ -135,6 +137,7 @@ export default function Dashboard(): JSX.Element {
                           centerText: true,
                         },
                       ]}
+                      testId='table-producers-max'
                   />
                   <h3>Minimum</h3>
                   <DataTable 
@@ -165,18 +168,31 @@ export default function Dashboard(): JSX.Element {
                             centerText: true,
                           },
                         ]}
+                        testId='table-producers-min'
                     />
               </DashboardPanel>
             </Skeleton>
-            <Skeleton loading={moviesByYear?.loading} flex>
+            <Skeleton loading={moviesByYear?.loading} flex testId='skeleton-movies-by-year'>
               <DashboardPanel 
                 title='List movie winners by year' 
                 onRefresh={moviesByYear?.refetch} 
                 loading={moviesByYear?.loading}
               >
                 <div className='search-block'>
-                  <Input value={searchVal} type="number" label='Year' flex error={searchError || ''} onChange={setSearchVal}/>
-                  <Button icon='search' onClick={handleSearchClick}/>
+                  <Input 
+                    value={searchVal} 
+                    type="number" 
+                    label='Year' 
+                    flex 
+                    error={searchError || ''} 
+                    onChange={setSearchVal}
+                    testId='input-search-year'
+                  />
+                  <Button 
+                    icon='search' 
+                    onClick={handleSearchClick}
+                    testId='button-search-year'
+                  />
                 </div>
                 <DataTable
                   data={moviesByYear?.response || []}
@@ -199,6 +215,7 @@ export default function Dashboard(): JSX.Element {
                     },
                   ]} 
                   emptyMessage='No movies found for this year'
+                  testId='table-movies-by-year'
                 />
               </DashboardPanel>
             </Skeleton>

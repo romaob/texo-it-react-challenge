@@ -12,8 +12,8 @@ export function fetchData({
 }): Promise<any> {
     return new Promise(async (resolve, reject) => {
 
-        //Add a little delay just to better see the loading state :)
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        //!Add a little delay just to better see the loading state :)
+        //await new Promise(resolve => setTimeout(resolve, 1000));
 
         fetch(URL + param)
             .then((response) => response.json())
@@ -68,7 +68,7 @@ export type FetchListOfMoviesResponse = {
  * @returns Promise
  */
 export function fetchListOfMovies({
-    page = 1,
+    page = 0,
     size = 99,
     winner = undefined,
     year,

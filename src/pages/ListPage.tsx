@@ -13,9 +13,7 @@ export default function ListPage(): JSX.Element {
     loading, 
     response, 
     yearFilter,
-    refetch: fetchData, 
     setPage, 
-    setSize, 
     setWinner, 
     setYear
   } = useMovies();
@@ -36,7 +34,6 @@ export default function ListPage(): JSX.Element {
     }
 
     const errorMessage = validateStringYear(yearText);
-    console.log(errorMessage);
     if (errorMessage) {
       alert(errorMessage);
       return;
@@ -73,7 +70,7 @@ export default function ListPage(): JSX.Element {
 
   return (
     <PageWrapper title='List Movies'>
-      <div className='listpage'>
+      <div className='listpage' data-testid='listpage'>
         <Skeleton flex loading={loading}>
           <DataTable 
             data={response?.content}
@@ -95,10 +92,12 @@ export default function ListPage(): JSX.Element {
                           onChange={setYearText}
                           type='number'
                           flex
+                          testId='input-filter-year'
                         />
                         <Button
                           icon='checkmark'
                           onClick={handleYearFilter}
+                          testId='button-filter-year-confirm'
                         />
                       </div>
                     )
@@ -109,6 +108,7 @@ export default function ListPage(): JSX.Element {
                         <Button 
                           icon='edit' 
                           onClick={() => setShowYearFilter(true)}
+                          testId='button-filter-year-show'
                         />
                       </div>
                     )
@@ -134,11 +134,13 @@ export default function ListPage(): JSX.Element {
                       icon='checkmark'
                       toggled={!useWinners}
                       onClick={handleWinnersFilter}
+                      testId='button-filter-winners'
                     />
                     <Button
                       icon='cancel'
                       toggled={!useLoosers}
                       onClick={handleLoosersFilter}
+                      testId='button-filter-loosers'
                     />
                   </div>
                 ),
@@ -152,6 +154,7 @@ export default function ListPage(): JSX.Element {
               },
             ]}
             emptyMessage='No movies found'
+            testId='table-movies'
           />
         </Skeleton>
         <Pagination

@@ -14,14 +14,16 @@ export interface DataTableProps {
     data?: any[];
     columns?: DataTableColumn[];
     emptyMessage?: string;
+    testId?: string;
 }
 export default function DataTable({
     data,
     columns,
-    emptyMessage
+    emptyMessage,
+    testId = 'data-table',
 }: DataTableProps): JSX.Element {
   return (
-    <div className='data-table' data-testid='data-table'>
+    <div className='data-table' data-testid={testId}>
         <div className='data-table-content'>
             {columns && columns.map((column) => (
                 <div 

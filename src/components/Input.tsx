@@ -19,9 +19,10 @@ export default function Input({
     onChange,
     disabled,
     flex,
+    testId = 'input',
 }: InputProps): JSX.Element {
   return (
-    <div className='input' data-disabled={disabled} data-flex={flex} data-testid='input'>
+    <div className='input' data-disabled={disabled} data-flex={flex} data-testid={testId}>
         {label && <label className='input-label'>{label}</label>}
         <input
             className='input-field'

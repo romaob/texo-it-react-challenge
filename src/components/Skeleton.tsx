@@ -5,13 +5,15 @@ export interface SkeletonProps {
     children?: React.ReactNode;
     rounded?: boolean;
     flex?: boolean;
+    testId?: string;
 }
 
 export default function Skeleton({
     loading,
     children,
     rounded,
-    flex
+    flex,
+    testId = 'skeleton',
 } : SkeletonProps): JSX.Element {
   return (
     <div 
@@ -19,7 +21,7 @@ export default function Skeleton({
       data-loading={loading} 
       data-rounded={rounded} 
       data-flex={flex} 
-      data-testid='skeleton'>
+      data-testid={testId}>
         {children}
     </div>
   )

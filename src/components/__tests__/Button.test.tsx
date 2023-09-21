@@ -38,11 +38,40 @@ describe('Button tests', () => {
     expect(screen.getByTestId('button')).toHaveClass('button-text-contrast');
   });
 
+  it('should render the right prop when disabled', () => {
+    render(<Button data-testid="button" disabled />);
+    expect(screen.getByTestId('button')).toHaveAttribute('data-disabled', 'true');
+  });
+
+  it('should render the right prop when toggled', () => {
+    render(<Button data-testid="button" toggled />);
+    expect(screen.getByTestId('button')).toHaveAttribute('data-toggled', 'true');
+  });
+
+  it('should render the right prop when readOnly', () => {
+    render(<Button data-testid="button" readOnly />);
+    expect(screen.getByTestId('button')).toHaveAttribute('data-readonly', 'true');
+  });
+
   it('should calls the "onClick" function when the button is clicked', () => {
     const handleClick = jest.fn();
     render(<Button data-testid="button" onClick={handleClick} />);
     fireEvent.click(screen.getByTestId('button'));
     expect(handleClick).toHaveBeenCalled();
+  });
+
+  it('should not call the "onClick" function when the button is clicked and the "disabled" prop is set to true', () => {
+    const handleClick = jest.fn();
+    render(<Button data-testid="button" onClick={handleClick} disabled />);
+    fireEvent.click(screen.getByTestId('button'));
+    expect(handleClick).not.toHaveBeenCalled();
+  });
+
+  it('should not call the "onClick" function when the button is clicked and the "readOnly" prop is set to true', () => {
+    const handleClick = jest.fn();
+    render(<Button data-testid="button" onClick={handleClick} readOnly />);
+    fireEvent.click(screen.getByTestId('button'));
+    expect(handleClick).not.toHaveBeenCalled();
   });
 
   it('should render a link with the provided url', () => {
