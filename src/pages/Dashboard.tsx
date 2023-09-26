@@ -175,7 +175,7 @@ export default function Dashboard(): JSX.Element {
             testId="skeleton-movies-by-year"
           >
             <DashboardPanel
-              title="List movie winners by year"              
+              title="List movie winners by year"
               loading={moviesByYear?.loading}
             >
               <div className="search-block">

@@ -6,10 +6,7 @@ export const URL = 'https://tools.texoit.com/backend-java/api/movies';
  * @returns Promise
  */
 export function fetchData({ param = '' }: { param?: string }): Promise<any> {
-  return new Promise(async (resolve, reject) => {
-    //!Add a little delay just to better see the loading state :)
-    //await new Promise(resolve => setTimeout(resolve, 1000));
-
+  return new Promise((resolve, reject) => {
     fetch(URL + param)
       .then((response) => response.json())
       .then((responseJson) => {

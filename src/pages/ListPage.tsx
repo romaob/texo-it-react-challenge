@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PageWrapper from '../components/PageWrapper';
 import { useMovies } from '../hooks/useMovies';
 import DataTable from '../components/DataTable';

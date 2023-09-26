@@ -1,10 +1,14 @@
 {
-  "ignorePatterns": ["**/*.test.js", "**/*.test.jsx", "**/*.test.ts", "**/*.test.tsx"],
+  "ignorePatterns": [
+    "**/*.test.js",
+    "**/*.test.jsx",
+    "**/*.test.ts",
+    "**/*.test.tsx"
+  ],
   "extends": ["eslint:recommended", "plugin:react/recommended"],
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint", "react"],
   "rules": {
-    "react/prop-types": "off",
-    //"no-unused-vars": "error"
+    "react/prop-types": "off"
   }
 }
