@@ -1,7 +1,6 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import ListPage from "../ListPage";
 import userEvent from "@testing-library/user-event";
-import { YEAR_ERRORS } from "../../utils/validations";
 
 //Mocking the hooks
 jest.mock('../../hooks/useMovies', () => ({
@@ -33,11 +32,13 @@ describe('ListPage tests', () => {
         expect(require('../../hooks/useMovies').useMovies).toHaveBeenCalled();
     });
 
-    it('should render call the hook setYear after typing a year and confirming it',async () => {
+    it('should call the hook setYear, and reseting the page after typing a year and confirming it',async () => {
         const setYearHandler = jest.fn();
+        const setPageHandler = jest.fn();
         const state_spy = jest.spyOn(require('../../hooks/useMovies'), 'useMovies');
         state_spy.mockReturnValue({
             setYear: setYearHandler,
+            setPage: setPageHandler,
             loading: false,
         });
         render(
@@ -52,13 +53,16 @@ describe('ListPage tests', () => {
         userEvent.type(input, '1980');
         fireEvent.click(screen.getByTestId('button-filter-year-confirm'));
         expect(setYearHandler).toHaveBeenCalledWith(1980);
+        expect(setPageHandler).toHaveBeenCalledWith(0);
     });
 
-    it('should render call the hook without year filter after confirming without any text on the input',async () => {
+    it('should call the hook without year, and reseting the page filter after confirming without any text on the input',async () => {
         const setYearHandler = jest.fn();
+        const setPageHandler = jest.fn();
         const state_spy = jest.spyOn(require('../../hooks/useMovies'), 'useMovies');
         state_spy.mockReturnValue({
             setYear: setYearHandler,
+            setPage: setPageHandler,
             loading: false,
         });
         render(
@@ -71,6 +75,7 @@ describe('ListPage tests', () => {
         expect(screen.getByTestId('input-filter-year')).toBeInTheDocument();
         fireEvent.click(screen.getByTestId('button-filter-year-confirm'));
         expect(setYearHandler).toHaveBeenCalledWith(undefined);
+        expect(setPageHandler).toHaveBeenCalledWith(0);
     });
 
     it('should show a alert message when the year is not valid',async () => {
@@ -79,6 +84,7 @@ describe('ListPage tests', () => {
         const state_spy = jest.spyOn(require('../../hooks/useMovies'), 'useMovies');
         state_spy.mockReturnValue({
             setYear: setYearHandler,
+            setPage: jest.fn(),
             loading: false,
         });
         render(
@@ -95,11 +101,13 @@ describe('ListPage tests', () => {
         expect(setYearHandler).toHaveBeenCalledWith(undefined);
     });
 
-    it('should render call the hook setWinner after clicking the win/lose filter button',async () => {
+    it('should render call the hook setWinner, and reseting the page after clicking the win/lose filter button',async () => {
         const setWinnerHandler = jest.fn();
+        const setPageHandler = jest.fn();
         const state_spy = jest.spyOn(require('../../hooks/useMovies'), 'useMovies');
         state_spy.mockReturnValue({
             setWinner: setWinnerHandler,
+            setPage: setPageHandler,
             loading: false,
         });
         render(
@@ -114,15 +122,18 @@ describe('ListPage tests', () => {
         expect(screen.getByTestId('button-filter-winners')).toHaveAttribute('data-toggled', 'true');
         expect(screen.getByTestId('button-filter-loosers')).toHaveAttribute('data-toggled', 'false');
         expect(setWinnerHandler).toHaveBeenCalledWith(false);
+        expect(setPageHandler).toHaveBeenCalledWith(0);
         fireEvent.click(screen.getByTestId('button-filter-winners'));
         expect(screen.getByTestId('button-filter-winners')).toHaveAttribute('data-toggled', 'false');
         expect(screen.getByTestId('button-filter-loosers')).toHaveAttribute('data-toggled', 'false');
         expect(setWinnerHandler).toHaveBeenCalledWith(undefined);
         fireEvent.click(screen.getByTestId('button-filter-loosers'));
+        expect(setPageHandler).toHaveBeenCalledWith(0);
         expect(screen.getByTestId('button-filter-winners')).toHaveAttribute('data-toggled', 'false');
         expect(screen.getByTestId('button-filter-loosers')).toHaveAttribute('data-toggled', 'true');
         expect(setWinnerHandler).toHaveBeenCalledWith(true);
         fireEvent.click(screen.getByTestId('button-filter-winners'));
+        expect(setPageHandler).toHaveBeenCalledWith(0);
         expect(screen.getByTestId('button-filter-winners')).toHaveAttribute('data-toggled', 'true');
         expect(screen.getByTestId('button-filter-loosers')).toHaveAttribute('data-toggled', 'false');
         expect(setWinnerHandler).toHaveBeenCalledWith(false);
@@ -130,5 +141,6 @@ describe('ListPage tests', () => {
         expect(screen.getByTestId('button-filter-winners')).toHaveAttribute('data-toggled', 'false');
         expect(screen.getByTestId('button-filter-loosers')).toHaveAttribute('data-toggled', 'true');
         expect(setWinnerHandler).toHaveBeenCalledWith(true);
+        expect(setPageHandler).toHaveBeenCalledWith(0);
     });
 });

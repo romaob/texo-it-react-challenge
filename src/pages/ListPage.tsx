@@ -25,11 +25,13 @@ export default function ListPage(): JSX.Element {
 
   /**
    * Handle the data for the Year filter confirmation
+   * 
    */
   function handleYearFilter() {
     if (!yearText) {
       setYear(undefined);
       setShowYearFilter(false);
+      setPage(0)
       return;
     }
 
@@ -38,6 +40,7 @@ export default function ListPage(): JSX.Element {
       alert(errorMessage);
       return;
     }
+    setPage(0)
     setYear(parseInt(yearText));
     setShowYearFilter(false);
   }
@@ -52,6 +55,7 @@ export default function ListPage(): JSX.Element {
     const los = !useLoosers && !win ? true : useLoosers;
     setUseWinners(win);
     setUseLoosers(los);
+    setPage(0)
     setWinner(win && los ? undefined : win)
   }
 
@@ -65,6 +69,7 @@ export default function ListPage(): JSX.Element {
     const win = !useWinners && !los ? true : useWinners;
     setUseWinners(win);
     setUseLoosers(los);
+    setPage(0)
     setWinner(win && los ? undefined : win)
   }
 
