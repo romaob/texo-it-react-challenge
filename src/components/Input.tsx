@@ -9,6 +9,7 @@ export interface InputProps {
   testId?: string;
   disabled?: boolean;
   flex?: boolean;
+  placeholder?: string;
 }
 /**
  * Input component, with the base design and functionality
@@ -20,6 +21,7 @@ export interface InputProps {
  * @prop {string} testId - The test id to be used on the tests
  * @prop {boolean} disabled - If the input is disabled
  * @prop {boolean} flex - If the input should be displayed as flex
+ * @prop {string} placeholder - The placeholder of the input
  * @returns JSX.Element
  */
 export default function Input({
@@ -31,6 +33,7 @@ export default function Input({
   disabled,
   flex,
   testId = 'input',
+  placeholder,
 }: InputProps): JSX.Element {
   return (
     <div
@@ -47,6 +50,7 @@ export default function Input({
         onChange={(e) => onChange && onChange(e.target.value)}
         data-error={!!error}
         disabled={disabled}
+        placeholder={placeholder}
       />
       <span className="input-error">{error}</span>
     </div>

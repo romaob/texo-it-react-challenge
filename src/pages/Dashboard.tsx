@@ -87,7 +87,6 @@ export default function Dashboard(): JSX.Element {
                     objectKey: 'name',
                     title: 'Name',
                     flex: true,
-                    centerText: true,
                   },
                   {
                     objectKey: 'winCount',
@@ -108,7 +107,7 @@ export default function Dashboard(): JSX.Element {
               onRefresh={producersMinMaxWins?.refetch}
               loading={producersMinMaxWins?.loading}
             >
-              <h3>Maximum</h3>
+              <h4>Maximum</h4>
               <DataTable
                 data={producersMinMaxWins?.response?.max || []}
                 columns={[
@@ -116,7 +115,6 @@ export default function Dashboard(): JSX.Element {
                     objectKey: 'producer',
                     title: 'Producer',
                     flex: true,
-                    centerText: true,
                   },
                   {
                     objectKey: 'interval',
@@ -139,7 +137,7 @@ export default function Dashboard(): JSX.Element {
                 ]}
                 testId="table-producers-max"
               />
-              <h3>Minimum</h3>
+              <h4>Minimum</h4>
               <DataTable
                 data={producersMinMaxWins?.response?.min || []}
                 columns={[
@@ -147,7 +145,6 @@ export default function Dashboard(): JSX.Element {
                     objectKey: 'producer',
                     title: 'Producer',
                     flex: true,
-                    centerText: true,
                   },
                   {
                     objectKey: 'interval',
@@ -178,8 +175,7 @@ export default function Dashboard(): JSX.Element {
             testId="skeleton-movies-by-year"
           >
             <DashboardPanel
-              title="List movie winners by year"
-              onRefresh={moviesByYear?.refetch}
+              title="List movie winners by year"              
               loading={moviesByYear?.loading}
             >
               <div className="search-block">
@@ -191,6 +187,7 @@ export default function Dashboard(): JSX.Element {
                   error={searchError || ''}
                   onChange={setSearchVal}
                   testId="input-search-year"
+                  placeholder="Search by year"
                 />
                 <Button
                   icon="search"

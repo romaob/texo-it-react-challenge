@@ -92,6 +92,7 @@ export default function ListPage(): JSX.Element {
                           type="number"
                           flex
                           testId="input-filter-year"
+                          placeholder="Filter by year"
                         />
                         <Button
                           icon="checkmark"
@@ -128,7 +129,7 @@ export default function ListPage(): JSX.Element {
                 centerText: true,
                 customTitleRender: () => (
                   <div className="data-table-filter-header">
-                    <h3>Winner</h3>
+                    <h3>Winner?</h3>
                     <Button
                       icon="checkmark"
                       toggled={!useWinners}

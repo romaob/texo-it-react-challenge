@@ -3,7 +3,7 @@ import Button from './Button';
 
 export interface DashboardPanelProps {
   title: string;
-  onRefresh: () => void;
+  onRefresh?: () => void;
   loading: boolean;
   children: React.ReactNode;
 }
@@ -23,7 +23,7 @@ export default function DashboardPanel({
 }: DashboardPanelProps): JSX.Element {
   function handleRefresh() {
     if (loading) return;
-    onRefresh();
+    onRefresh && onRefresh();
   }
 
   return (
@@ -33,12 +33,14 @@ export default function DashboardPanel({
         data-testid="dashboard-panel-header"
       >
         <h3 className="dashboard-panel-title">{title}</h3>
-        <Button
-          onClick={handleRefresh}
-          icon="refresh"
-          disabled={loading}
-          testId="dashboard-panel-refresh"
-        />
+        {onRefresh && (
+          <Button
+            onClick={handleRefresh}
+            icon="refresh"
+            disabled={loading}
+            testId="dashboard-panel-refresh"
+          />
+        )}
       </div>
       <div className="dashboard-panel-body" data-testid="dashboard-panel-body">
         {children}
