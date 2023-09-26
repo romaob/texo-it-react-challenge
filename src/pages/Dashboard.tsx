@@ -126,13 +126,13 @@ export default function Dashboard(): JSX.Element {
                         },
                         {
                           objectKey: 'previousWin',
-                          title: 'Previous Win',
+                          title: 'Previous Year',
                           flex: true,
                           centerText: true,
                         },
                         {
                           objectKey: 'followingWin',
-                          title: 'Following Win',
+                          title: 'Following Year',
                           flex: true,
                           centerText: true,
                         },
@@ -157,13 +157,13 @@ export default function Dashboard(): JSX.Element {
                           },
                           {
                             objectKey: 'previousWin',
-                            title: 'Previous Win',
+                            title: 'Previous Year',
                             flex: true,
                             centerText: true,
                           },
                           {
                             objectKey: 'followingWin',
-                            title: 'Following Win',
+                            title: 'Following Year',
                             flex: true,
                             centerText: true,
                           },
