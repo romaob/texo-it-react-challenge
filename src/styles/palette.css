@@ -1,9 +1,9 @@
 /* Color Palette of the App variables */
 :root {
-    --primary: #1a237e;
-    --primary-light: #b4cdf4;
-    --secondary: #31355c;
-    --accent: #ff6f00;
-    --background: #f5f5f5;
-    --error: #d50000;
+  --primary: #1a237e;
+  --primary-light: #b4cdf4;
+  --secondary: #31355c;
+  --accent: #ff6f00;
+  --background: #f5f5f5;
+  --error: #d50000;
 }

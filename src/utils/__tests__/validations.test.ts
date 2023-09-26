@@ -1,4 +1,4 @@
-import { YEAR_ERRORS, validateStringYear } from "../validations";
+import { YEAR_ERRORS, validateStringYear } from '../validations';
 
 describe('validateStringYear', () => {
   it('should return null for a valid year string', () => {

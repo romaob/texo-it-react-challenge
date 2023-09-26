@@ -1,3 +1,3 @@
 export const strings = {
-    appName: 'Texo IT - React Challenge',
+  appName: 'Texo IT - React Challenge',
 };

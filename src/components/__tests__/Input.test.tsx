@@ -1,4 +1,3 @@
-
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Input from '../Input';
@@ -15,7 +14,7 @@ describe('Input', () => {
   });
 
   it('should render the input field with the correct type', () => {
-    render(<Input type="number"/>);
+    render(<Input type="number" />);
     expect(screen.getByRole('spinbutton')).toHaveAttribute('type', 'number');
   });
 
@@ -39,7 +38,10 @@ describe('Input', () => {
 
   it('should disable the input field when disabled=true', () => {
     render(<Input disabled />);
-    expect(screen.getByTestId('input')).toHaveAttribute('data-disabled', 'true');
+    expect(screen.getByTestId('input')).toHaveAttribute(
+      'data-disabled',
+      'true'
+    );
     expect(screen.getByRole('textbox')).toBeDisabled();
   });
 

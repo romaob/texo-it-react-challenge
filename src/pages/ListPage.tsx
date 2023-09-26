@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import PageWrapper from '../components/PageWrapper'
-import { useMovies } from '../hooks/useMovies'
+import React, { useEffect, useState } from 'react';
+import PageWrapper from '../components/PageWrapper';
+import { useMovies } from '../hooks/useMovies';
 import DataTable from '../components/DataTable';
 import Skeleton from '../components/Skeleton';
 import Pagination from '../components/Pagination';
@@ -9,14 +9,8 @@ import Input from '../components/Input';
 import { validateStringYear } from '../utils/validations';
 
 export default function ListPage(): JSX.Element {
-  const {
-    loading, 
-    response, 
-    yearFilter,
-    setPage, 
-    setWinner, 
-    setYear
-  } = useMovies();
+  const { loading, response, yearFilter, setPage, setWinner, setYear } =
+    useMovies();
 
   const [showYearFilter, setShowYearFilter] = useState(false);
   const [yearText, setYearText] = useState<string | null>(null);
@@ -25,13 +19,13 @@ export default function ListPage(): JSX.Element {
 
   /**
    * Handle the data for the Year filter confirmation
-   * 
+   *
    */
   function handleYearFilter() {
     if (!yearText) {
       setYear(undefined);
       setShowYearFilter(false);
-      setPage(0)
+      setPage(0);
       return;
     }
 
@@ -40,7 +34,7 @@ export default function ListPage(): JSX.Element {
       alert(errorMessage);
       return;
     }
-    setPage(0)
+    setPage(0);
     setYear(parseInt(yearText));
     setShowYearFilter(false);
   }
@@ -55,8 +49,8 @@ export default function ListPage(): JSX.Element {
     const los = !useLoosers && !win ? true : useLoosers;
     setUseWinners(win);
     setUseLoosers(los);
-    setPage(0)
-    setWinner(win && los ? undefined : win)
+    setPage(0);
+    setWinner(win && los ? undefined : win);
   }
 
   /**
@@ -69,21 +63,21 @@ export default function ListPage(): JSX.Element {
     const win = !useWinners && !los ? true : useWinners;
     setUseWinners(win);
     setUseLoosers(los);
-    setPage(0)
-    setWinner(win && los ? undefined : win)
+    setPage(0);
+    setWinner(win && los ? undefined : win);
   }
 
   return (
-    <PageWrapper title='List Movies'>
-      <div className='listpage' data-testid='listpage'>
+    <PageWrapper title="List Movies">
+      <div className="listpage" data-testid="listpage">
         <Skeleton flex loading={loading}>
-          <DataTable 
+          <DataTable
             data={response?.content}
             columns={[
               {
                 objectKey: 'id',
                 title: 'ID',
-                centerText: true,              
+                centerText: true,
               },
               {
                 objectKey: 'year',
@@ -91,32 +85,32 @@ export default function ListPage(): JSX.Element {
                 customTitleRender: () => {
                   if (showYearFilter) {
                     return (
-                      <div className='data-table-filter-header'>
+                      <div className="data-table-filter-header">
                         <Input
                           value={yearText || ''}
                           onChange={setYearText}
-                          type='number'
+                          type="number"
                           flex
-                          testId='input-filter-year'
+                          testId="input-filter-year"
                         />
                         <Button
-                          icon='checkmark'
+                          icon="checkmark"
                           onClick={handleYearFilter}
-                          testId='button-filter-year-confirm'
+                          testId="button-filter-year-confirm"
                         />
                       </div>
-                    )
+                    );
                   } else {
                     return (
-                      <div className='data-table-filter-header'>
+                      <div className="data-table-filter-header">
                         <h3>Year {yearFilter ? `(${yearFilter})` : ''}</h3>
-                        <Button 
-                          icon='edit' 
+                        <Button
+                          icon="edit"
                           onClick={() => setShowYearFilter(true)}
-                          testId='button-filter-year-show'
+                          testId="button-filter-year-show"
                         />
                       </div>
-                    )
+                    );
                   }
                 },
                 centerText: true,
@@ -133,44 +127,44 @@ export default function ListPage(): JSX.Element {
                 flex: true,
                 centerText: true,
                 customTitleRender: () => (
-                  <div className='data-table-filter-header'>
+                  <div className="data-table-filter-header">
                     <h3>Winner</h3>
                     <Button
-                      icon='checkmark'
+                      icon="checkmark"
                       toggled={!useWinners}
                       onClick={handleWinnersFilter}
-                      testId='button-filter-winners'
+                      testId="button-filter-winners"
                     />
                     <Button
-                      icon='cancel'
+                      icon="cancel"
                       toggled={!useLoosers}
                       onClick={handleLoosersFilter}
-                      testId='button-filter-loosers'
+                      testId="button-filter-loosers"
                     />
                   </div>
                 ),
                 customCellRender: (row) => (
-                  <Button 
-                    icon={row.winner ? 'checkmark' : 'cancel'} 
+                  <Button
+                    icon={row.winner ? 'checkmark' : 'cancel'}
                     readOnly
                     disabled={!row.winner}
                   />
-                )
+                ),
               },
             ]}
-            emptyMessage='No movies found'
-            testId='table-movies'
+            emptyMessage="No movies found"
+            testId="table-movies"
           />
         </Skeleton>
         <Pagination
           loading={loading}
-          currentPage={response?.pageable?.pageNumber || 0 }
+          currentPage={response?.pageable?.pageNumber || 0}
           pageSize={response?.pageable?.pageSize || 1}
-          totalItems={response?.totalElements || 0} 
+          totalItems={response?.totalElements || 0}
           limit={5}
           onPageChange={(page) => setPage(page)}
         />
       </div>
     </PageWrapper>
-  )
+  );
 }

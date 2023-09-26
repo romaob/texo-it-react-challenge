@@ -2,7 +2,6 @@ import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import Button from '../Button';
 
-
 describe('Button tests', () => {
   it('should render without crashing', () => {
     render(<Button />);
@@ -40,17 +39,26 @@ describe('Button tests', () => {
 
   it('should render the right prop when disabled', () => {
     render(<Button data-testid="button" disabled />);
-    expect(screen.getByTestId('button')).toHaveAttribute('data-disabled', 'true');
+    expect(screen.getByTestId('button')).toHaveAttribute(
+      'data-disabled',
+      'true'
+    );
   });
 
   it('should render the right prop when toggled', () => {
     render(<Button data-testid="button" toggled />);
-    expect(screen.getByTestId('button')).toHaveAttribute('data-toggled', 'true');
+    expect(screen.getByTestId('button')).toHaveAttribute(
+      'data-toggled',
+      'true'
+    );
   });
 
   it('should render the right prop when readOnly', () => {
     render(<Button data-testid="button" readOnly />);
-    expect(screen.getByTestId('button')).toHaveAttribute('data-readonly', 'true');
+    expect(screen.getByTestId('button')).toHaveAttribute(
+      'data-readonly',
+      'true'
+    );
   });
 
   it('should calls the "onClick" function when the button is clicked', () => {
@@ -76,6 +84,9 @@ describe('Button tests', () => {
 
   it('should render a link with the provided url', () => {
     render(<Button data-testid="button" link="https://www.google.com" />);
-    expect(screen.getByTestId('button')).toHaveAttribute('href', 'https://www.google.com');
+    expect(screen.getByTestId('button')).toHaveAttribute(
+      'href',
+      'https://www.google.com'
+    );
   });
 });

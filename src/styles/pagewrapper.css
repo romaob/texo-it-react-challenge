@@ -1,55 +1,55 @@
 .page-wrapper {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .page-wrapper-header {
-    display: flex;
-    background-color: var(--primary);
-    color: white;
-    padding: 1rem;
-    align-items: center;
-    justify-content: flex-start;
+  display: flex;
+  background-color: var(--primary);
+  color: white;
+  padding: 1rem;
+  align-items: center;
+  justify-content: flex-start;
 }
-.page-wrapper-header h1{
-    font-size: 1rem;
-    line-height: 0.75rem;
-    font-weight: 600;
+.page-wrapper-header h1 {
+  font-size: 1rem;
+  line-height: 0.75rem;
+  font-weight: 600;
 }
 .page-wrapper-body {
-    display: flex;
-    flex: 1;
-    flex-direction: row;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
 }
 .page-wrapper-menu {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    background-color: var(--secondary);
-    color: white;
-    padding: 1rem;
-    width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: var(--secondary);
+  color: white;
+  padding: 1rem;
+  width: 200px;
 }
 .page-wrapper-content {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    padding-inline: 1rem;
-    align-items: flex-start;
-    background-color: var(--background);
-    padding-block-end: 1rem;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding-inline: 1rem;
+  align-items: flex-start;
+  background-color: var(--background);
+  padding-block-end: 1rem;
 }
-.page-wrapper-menu[data-show="false"] {
-    display: none;
+.page-wrapper-menu[data-show='false'] {
+  display: none;
 }
 
 /* Hiding the button, and showing the menu on larger screens*/
 @media only screen and (min-width: 768px) {
-    .page-wrapper-menu[data-show="false"] {
-        display: flex;
-    }
-    .page-wrapper-header-button{
-        display: none;
-    }
+  .page-wrapper-menu[data-show='false'] {
+    display: flex;
+  }
+  .page-wrapper-header-button {
+    display: none;
+  }
 }
